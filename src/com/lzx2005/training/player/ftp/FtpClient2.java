@@ -50,7 +50,7 @@ public class FtpClient2 {
         public void completed(Integer result, ByteBuffer attachment) {
             if(result>0){
                 int position = attachment.position() - 1;
-                if(attachment.get(position-1)==13 && attachment.get(position) == 10){
+                if(attachment.get(position-1)==13 && attachment.get(position) == 10){//判断是否为"\r\n"
                     if(isValidReply(attachment,0)){
                         attachment.flip();
                         showReply(attachment);

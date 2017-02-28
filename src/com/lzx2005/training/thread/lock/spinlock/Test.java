@@ -4,7 +4,8 @@ package com.lzx2005.training.thread.lock.spinlock;
  * Created by Lizhengxian on 2017/2/28.
  */
 public class Test implements Runnable {
-    static int sum;
+    static int acc1=1000;
+    static int acc2=1000;
     private SpinLock lock;
 
     public Test(SpinLock lock) {
@@ -24,16 +25,24 @@ public class Test implements Runnable {
         }
 
         Thread.currentThread().sleep(1000);
-        System.out.println(sum);
+        System.out.println(acc1);
+        System.out.println(acc2);
     }
 
     @Override
     public void run() {
         this.lock.lock();
-        this.lock.lock();
-        sum++;
-        this.lock.unLock();
+        try {
+            transAcc1ToAcc2(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         this.lock.unLock();
     }
 
+    public void transAcc1ToAcc2(int count) throws InterruptedException {
+        acc1 = acc1-count;
+        Thread.currentThread().sleep(100);
+        acc2 = acc2+count;
+    }
 }

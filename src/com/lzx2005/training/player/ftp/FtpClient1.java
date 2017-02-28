@@ -14,7 +14,7 @@ public class FtpClient1 {
 
     public static void main(String[] args) throws IOException {
         //Create a asyn channel
-        AsynchronousSocketChannel channel = AsynchronousSocketChannel.open();
+        final AsynchronousSocketChannel channel = AsynchronousSocketChannel.open();
 
         channel.connect(new InetSocketAddress("ftp.gnu.org", 21), channel, new CompletionHandler<Void, AsynchronousSocketChannel>() {
             @Override

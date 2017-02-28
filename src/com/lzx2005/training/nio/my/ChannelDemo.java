@@ -1,4 +1,4 @@
-package com.lzx2005.training.nio;
+package com.lzx2005.training.nio.my;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;

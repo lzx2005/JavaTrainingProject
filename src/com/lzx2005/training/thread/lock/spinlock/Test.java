@@ -24,23 +24,21 @@ public class Test implements Runnable {
             t.start();
         }
 
-        Thread.currentThread().sleep(1000);
+        Thread.currentThread().sleep(100000);
         System.out.println(acc1);
         System.out.println(acc2);
     }
 
     @Override
     public void run() {
-        this.lock.lock();
         try {
             transAcc1ToAcc2(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this.lock.unLock();
     }
 
-    public void transAcc1ToAcc2(int count) throws InterruptedException {
+    public synchronized void transAcc1ToAcc2(int count) throws InterruptedException {
         acc1 = acc1-count;
         Thread.currentThread().sleep(100);
         acc2 = acc2+count;

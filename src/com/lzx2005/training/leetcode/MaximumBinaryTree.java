@@ -5,6 +5,18 @@ package com.lzx2005.training.leetcode;
  */
 public class MaximumBinaryTree {
 
+
+
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if(t1 == null && t2 == null) return null;
+        if(t1 == null) t1 = new TreeNode(0);
+        if(t2 == null) t2 = new TreeNode(0);
+        TreeNode treeNode = new TreeNode(t1.val + t2.val);
+        treeNode.left = mergeTrees(t1.left,t2.left);
+        treeNode.right = mergeTrees(t1.right,t2.right);
+        return treeNode;
+    }
+
     public TreeNode constructMaximumBinaryTree(int[] nums) {
         if (nums == null) return null;
         return build(nums, 0, nums.length - 1);

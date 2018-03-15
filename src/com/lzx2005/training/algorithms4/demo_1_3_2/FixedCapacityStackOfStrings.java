@@ -1,4 +1,4 @@
-package com.lzx2005.training.algorithms4.demo_1_3_2_1;
+package com.lzx2005.training.algorithms4.demo_1_3_2;
 
 
 /**
@@ -7,7 +7,7 @@ package com.lzx2005.training.algorithms4.demo_1_3_2_1;
  * Created by hzlizx on 2018/3/15 0015
  */
 
-public class FixedCapacicyStackOfStrings{
+public class FixedCapacityStackOfStrings {
 
     /**
      * 储存值，数组，定长
@@ -17,10 +17,10 @@ public class FixedCapacicyStackOfStrings{
 
     /**
      * 初始化参数
-     * @param capacicy  定义长度
+     * @param capacity  定义长度
      */
-    public FixedCapacicyStackOfStrings(int capacicy) {
-        values = new String[capacicy];
+    public FixedCapacityStackOfStrings(int capacity) {
+        values = new String[capacity];
     }
 
     /**

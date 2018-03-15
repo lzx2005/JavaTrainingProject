@@ -2,10 +2,12 @@ package com.lzx2005.training.algorithms4.demo_1_3_3;
 
 import com.lzx2005.training.algorithms4.demo_1_3_2.CustomStack;
 
+import java.util.Iterator;
+
 /**
  * Created by hzlizx on 2018/3/15 0015
  */
-public class LinkedStack<T> implements CustomStack<T> {
+public class LinkedStack<T> implements CustomStack<T>,Iterable<T> {
     private Node<T> firstNode;
 
     @Override
@@ -36,6 +38,26 @@ public class LinkedStack<T> implements CustomStack<T> {
         }else{
             return null;
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+
+            Node<T> node = firstNode;
+
+            @Override
+            public boolean hasNext() {
+                return node !=null;
+            }
+
+            @Override
+            public T next() {
+                T v = node.value;
+                node = node.next;
+                return v;
+            }
+        };
     }
 
     class Node<T> {

@@ -9,7 +9,7 @@ public class TestClass {
         testLinkedStack();
     }
 
-    private static void testLinkedStack(){
+    private static void testLinkedStack() {
         LinkedStack<String> stringLinkedStack = new LinkedStack<>();
         stringLinkedStack.push("a");
         stringLinkedStack.push("b");
@@ -20,11 +20,12 @@ public class TestClass {
         System.out.println(stringLinkedStack.pop());
         System.out.println(stringLinkedStack.pop());
         System.out.println(stringLinkedStack.pop());
-        stringLinkedStack.push("c");
-        stringLinkedStack.push("d");
-        System.out.println(stringLinkedStack.pop());
-        System.out.println(stringLinkedStack.pop());
-        System.out.println(stringLinkedStack.pop());
+        for (int i = 0; i < 11000; i++) {
+            stringLinkedStack.push(i + "");
+        }
+        for (String value : stringLinkedStack) {
+            System.out.println(value);
+        }
     }
 
 }

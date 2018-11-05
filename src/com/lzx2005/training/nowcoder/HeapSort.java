@@ -1,6 +1,6 @@
 package com.lzx2005.training.nowcoder;
 
-
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -23,16 +23,16 @@ public class HeapSort {
         }
 
         int heapSize = arr.length;
-        swap(arr, 0, --heapSize);
-        while (heapSize>0){
+        ArrayUtils.swap(arr, 0, --heapSize);
+        while (heapSize > 0) {
             heapify(arr, 0, heapSize);
-            swap(arr, 0 , --heapSize);
+            ArrayUtils.swap(arr, 0, --heapSize);
         }
     }
 
     private static void heapInsert(int[] arr, int index) {
         while (arr[index] > arr[(index - 1) / 2]) {
-            swap(arr, index, (index - 1) / 2);
+            ArrayUtils.swap(arr, index, (index - 1) / 2);
             index = (index - 1) / 2;
         }
     }
@@ -48,17 +48,12 @@ public class HeapSort {
             if (index == largest) {
                 break;
             }
-            swap(arr, index, largest);
+            ArrayUtils.swap(arr, index, largest);
             index = largest;
             left = index * 2 + 1;
         }
     }
 
-    private static void swap(int[] arr, int p1, int p2) {
-        int temp = arr[p1];
-        arr[p1] = arr[p2];
-        arr[p2] = temp;
-    }
 
     public static void print(int[] arr) {
         String join = StringUtils.join(arr, ',');

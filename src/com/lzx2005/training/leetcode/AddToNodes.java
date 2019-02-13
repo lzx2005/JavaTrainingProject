@@ -4,6 +4,7 @@ package com.lzx2005.training.leetcode;
  * Created by Lizhengxian on 2017/3/27.
  */
 
+import com.lzx2005.training.node.ListNode;
 import org.w3c.dom.NodeList;
 
 /**
@@ -15,11 +16,6 @@ import org.w3c.dom.NodeList;
  * }
  */
 
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
-}
 public class AddToNodes {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         return add(l1,l2);

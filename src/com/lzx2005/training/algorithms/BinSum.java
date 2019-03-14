@@ -1,4 +1,4 @@
-package com.lzx2005.training.suanfa;
+package com.lzx2005.training.algorithms;
 
 /**
  * Created by Lizhengxian on 2017/3/17.

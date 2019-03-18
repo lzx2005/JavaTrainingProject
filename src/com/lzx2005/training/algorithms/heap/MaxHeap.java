@@ -21,6 +21,16 @@ public class MaxHeap {
         this.count = 0;
     }
 
+    MaxHeap(Integer[] array, int length) {
+        this.data = new Integer[length + 1];
+        for (int i = 1; i <= length; i++) {
+            data[i] = array[i - 1];
+        }
+        this.capacity = length;
+        this.count = length;
+        this.heapify();
+    }
+
     public void insert(int num) {
         if (count >= capacity - 1) throw new IndexOutOfBoundsException("heap is full");
         data[++count] = num;
@@ -34,7 +44,7 @@ public class MaxHeap {
         }
         Integer top = data[1];
         data[1] = data[count--];
-        shiftDown();
+        shiftDown(1);
         return top;
     }
 
@@ -45,8 +55,7 @@ public class MaxHeap {
         }
     }
 
-    private void shiftDown() {
-        int index = 1;
+    private void shiftDown(int index) {
         while (index * 2 <= count) {
             // 至少有一个孩子
             Integer biggerIndex = index * 2;
@@ -65,18 +74,21 @@ public class MaxHeap {
         }
     }
 
+    private void heapify() {
+        //第一个非叶节点开始
+        int index = count / 2;
+        while (index > 0) {
+            this.shiftDown(index);
+            index = index - 1;
+        }
+    }
+
     public int size() {
         return count;
     }
 
     public boolean isEmpty() {
         return count == 0;
-    }
-
-    public void print() {
-        for (int i : data) {
-            System.out.println(i + " ");
-        }
     }
 
     @Override
@@ -89,18 +101,50 @@ public class MaxHeap {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        MaxHeap maxHeap = new MaxHeap(100);
-        Random random = new Random();
-        for (int i = 1; i < 20; i++) {
-            maxHeap.insert(random.nextInt(1000));
+    public void print(Integer[] arrays) {
+        StringBuilder sb = new StringBuilder();
+        if (data != null) {
+            Arrays.stream(arrays).forEach(i -> sb.append(i).append(","));
+            sb.deleteCharAt(sb.length() - 1);
         }
-        System.out.println(maxHeap);
+        System.out.println(sb.toString());
+    }
+
+    public static void main(String[] args) {
+//        MaxHeap maxHeap = new MaxHeap(100);
+//        Random random = new Random();
+//        for (int i = 1; i < 20; i++) {
+//            maxHeap.insert(random.nextInt(1000));
+//        }
+//        System.out.println(maxHeap);
+//        StringBuilder stringBuilder = new StringBuilder();
+//        while (!maxHeap.isEmpty()) {
+//            stringBuilder.append(maxHeap.pop()).append(",");
+//        }
+//        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+//        System.out.println(stringBuilder.toString());
+        int length = 1000;
+        Integer[] integers = new Integer[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            integers[i] = random.nextInt(1000);
+        }
+        StringBuilder sb = new StringBuilder();
+        if (integers != null) {
+            Arrays.stream(integers).forEach(i -> sb.append(i).append(","));
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        System.out.println(sb.toString());
+        MaxHeap maxHeap = new MaxHeap(integers, length);
+        System.out.println(maxHeap.toString());
+
+
         StringBuilder stringBuilder = new StringBuilder();
         while (!maxHeap.isEmpty()) {
             stringBuilder.append(maxHeap.pop()).append(",");
         }
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         System.out.println(stringBuilder.toString());
+
     }
 }

@@ -1,4 +1,4 @@
-package com.lzx2005.training.algorithms.heap;
+package com.lzx2005.training.dataStructure.heap;
 
 import com.lzx2005.training.utils.CommonUtils;
 

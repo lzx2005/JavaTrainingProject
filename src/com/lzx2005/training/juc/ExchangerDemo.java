@@ -1,5 +1,7 @@
 package com.lzx2005.training.juc;
 
+import io.github.lzx2005.constants.BrowserType;
+
 import java.util.concurrent.Exchanger;
 
 public class ExchangerDemo {
@@ -27,5 +29,9 @@ public class ExchangerDemo {
                 e.printStackTrace();
             }
         }, "Thread2").start();
+
+        BrowserType chrome = BrowserType.valueOf("Chrome");
+        System.out.println(chrome);
+
     }
 }

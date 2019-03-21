@@ -2,6 +2,7 @@ package com.lzx2005.training.dataStructure.graph.impl;
 
 import com.lzx2005.training.dataStructure.graph.Graph;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -64,5 +65,11 @@ public class AdjacencyListGraph implements Graph {
             });
             System.out.println();
         }
+    }
+
+    @Override
+    public Iterator iterator(int x) {
+        assert x > 0 && x < n;
+        return g[x].iterator();
     }
 }
